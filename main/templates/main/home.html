@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block titulo%}Bienvenido{%endblock titulo%}
+
+{%block content%}
+	<h1>Home</h1>
+	<a href="{%url 'optica:nueva_cita'%}">Optica</a>
+{%endblock content%}
