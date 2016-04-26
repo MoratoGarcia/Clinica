@@ -1,0 +1,114 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block titulo%}Optica - Cita{%endblock titulo%}
+
+{%block content%}
+<section class="section">
+<section class="container">
+  <article class="row">
+    <div class="datos col m3 white">
+      <img class="responsive-img" src="{{paciente.foto.url}}">
+      <h5>DATOS DEL PACIENTE</h5>
+        <p><strong>Nombre:</strong>
+          {{paciente.nombre}}</p>
+        <p><strong>Edad:</strong>
+          {{paciente.edad}}</p>
+        <p><strong>Sexo:</strong>
+          {{paciente.sexo}}</p>
+        <p><strong>Direccón:</strong>
+          {{paciente.direccion}}</p>
+        <p><strong>Fecha de Nacimiento:</strong>
+          {{paciente.fecha_nacimiento}}</p>
+
+
+    </div>
+
+    <div class="expediente col m9 grey lighten-3">
+      <h4>HISTORIAL MEDICO DEL PACIENTE</h4>
+      <p>Enfermedad: {{paciente.optexp.enfermedad}}</p>
+      <p>dato2: {{paciente.optexp.dato2}}</p>
+      <p>dato3: {{paciente.optexp.dato3}}</p>
+
+      <div class="chequeos">
+
+        <ul class="collection">
+        {%for chequeo in chequeos%}
+        <div class="collection-item">
+        <li>fecha del chequeo: {{chequeo.fecha}}</li>
+        <li>graduacion: {{chequeo.graduacion}}</li>
+        <li>observaciones: {{chequeo.observaciones}}</li>
+        <li>
+          {%if chequeo.compra%}Armazon: {{chequeo.armazon}}{%endif%}
+        </li>
+        </div>
+
+        {%empty%}
+        <li><strong>No hay chequeos anteriores</strong></li>
+        {%endfor%}
+
+        </ul>
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+  </article>
+
+
+
+
+
+
+
+
+
+
+ <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="waves-effect btn-floating btn-large blue modal-trigger" href="#modal1">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
+
+  </section>
+  </section>
+
+
+    <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Agregar Chequeo</h4>
+      <p>
+      	<form action="{%url 'optica:nueva_cita' paciente.id%}" method="post">
+      		{%csrf_token%}
+      		{{cform.as_table}}
+      		<input type="hidden" name="selector" value="chequeo">
+      		<input type="submit" value="Agregar" class="btn blue">
+      	</form>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn red">Cancelar</a>
+    </div>
+  </div>
+
+
+{%endblock content%}
+
+{%block scripts%}
+<script>
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+    $('select').material_select();
+  });
+
+</script>
+{%endblock scripts%}

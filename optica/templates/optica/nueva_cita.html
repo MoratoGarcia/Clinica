@@ -4,5 +4,58 @@
 {%block titulo%}Optica - Cita{%endblock titulo%}
 
 {%block content%}
-	<h1>Bienvenidoa la optica</h1>
+<section class="container">
+
+<div class="buscador row">
+		<h5 class="col s12">Seleccione el Paciente</h5>
+
+		<form action="." method="post">
+		{%csrf_token%}
+		{{pform.as_p}}
+		<input type="hidden" name="selector" value="paciente">
+		<input type="submit" value="seleccionar" class="btn blue">
+	</form>
+
+
+	<input class="col s10" type="text"><i class="material-icons col s2">search</i>
+
+
+</div>
+
+  <ul class="collection">
+    {%for paciente in pacientes%}
+    <a href="{{paciente.get_absolute_url_optica}}">
+    <li class="collection-item avatar">
+      <img src="{{paciente.foto.url}}" alt="" class="circle">
+      <span class="title">Nombre: {{paciente.nombre}}</span>
+      <p>Edad: {{paciente.edad}} <br>
+         Sexo: {{paciente.sexo}}
+      </p>
+      <i class="secondary-content material-icons">info_outline</i>
+    </li>
+    </a>
+    {%empty%}
+   <li class="collection-item">
+    NO HAY PACIENTES PARA MOSTRAR
+   </li>
+   {%endfor%}
+    </ul>
+
+
+
+
+  </section>
+
+
 {%endblock content%}
+
+{%block scripts%}
+<script>
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+    $('select').material_select();
+  });
+
+</script>
+{%endblock scripts%}
