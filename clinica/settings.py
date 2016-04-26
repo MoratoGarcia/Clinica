@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'optica',
+    'ventas',
 
 ]
 
@@ -67,7 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # Agrego esto para la carpeta media
+                # Carpeta media.
                 'django.template.context_processors.media',
             ],
         },

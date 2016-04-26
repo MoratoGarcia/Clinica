@@ -35,7 +35,7 @@
         <ul class="collection">
         {%for chequeo in chequeos%}
         <div class="collection-item">
-        <li>fecha del chequeo: {{chequeo.fecha}}</li>
+        <li>fecha de consulta: {{chequeo.fecha}}</li>
         <li>graduacion: {{chequeo.graduacion}}</li>
         <li>observaciones: {{chequeo.observaciones}}</li>
         <li>
@@ -44,7 +44,7 @@
         </div>
 
         {%empty%}
-        <li><strong>No hay chequeos anteriores</strong></li>
+        <li><strong>No hay consultas anteriores</strong></li>
         {%endfor%}
 
         </ul>
