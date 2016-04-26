@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block titulo%}
+Acceso al sistema
+{%endblock titulo%}
+
+{%block content%}
+<section class="container">
+<article class="row">
+
+<div class="login col m6 offset-m3 s12">
+	{%if form.errors%}
+	<p>El usuario y contraseña no coinciden</p>
+	{%else%}
+	<h5>Acceso al sistema</h5>
+	{%endif%}
+
+	<form action="{%url 'login'%}" method="post">
+		{%csrf_token%}
+		{{form.as_p}}
+		<input type="hidden" name="next" value="{{next}}">
+		<input type="submit" value="Entrar" class="btn waves-effect blue">
+	</form>
+
+</div>
+
+</article>
+</section>
+
+
+{%endblock content%}
