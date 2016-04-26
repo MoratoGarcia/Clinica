@@ -48,7 +48,7 @@ class Chequeo(models.Model):
 	armazon=models.CharField(max_length=50,choices=CHOICES,default='opcion1')
 
 	def __str__(self):
-		return "Chequeo del {}".format(self.fecha)
+		return "Chequeo del {} de {}".format(self.fecha,self.expediente)
 
 
 

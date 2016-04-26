@@ -4,6 +4,38 @@
 {%block titulo%}Bienvenido{%endblock titulo%}
 
 {%block content%}
-	<h1>Home</h1>
-	<a href="{%url 'optica:paciente'%}">Optica</a>
+
+
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="http://vahq.net/images/healthcare.jpg"> <!-- random image -->
+        <div class="caption center-align fondito">
+          <h3>Sistema Integral de Servicio Medico</h3>
+          <h5 class="light grey-text text-lighten-3">Development by: Montserrat Cristina Morato </h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://olympusdialysis.com/wp-content/uploads/2014/05/doctors.jpg"> <!-- random image -->
+        <div class="caption center-align fondito">
+          <h3>Sistema Integral de Servicio Medico</h3>
+          <h5 class="light grey-text text-lighten-3">Development by: Montserrat Cristina Morato </h5>
+        </div>
+      </li>
+  </ul>
+</div>
+
+
+
 {%endblock content%}
+
+{%block scripts%}
+<script>
+ $(document).ready(function(){
+      $('.slider').slider({full_width: true,
+      					indicators:false,
+      					height:700});
+    });
+
+</script>
+{%endblock scripts%}
